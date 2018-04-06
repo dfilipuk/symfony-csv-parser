@@ -57,6 +57,20 @@ class Product
     /**
      * @var integer
      *
+     * @ORM\Column(name="intStock", type="integer", nullable=false)
+     */
+    private $stock;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="dblCost", type="decimal", precision=12, scale=4, nullable=false)
+     */
+    private $cost;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="intProductDataId", type="integer", options={"unsigned" : true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -117,6 +131,22 @@ class Product
     public function getTimestamp(): \DateTime
     {
         return $this->timestamp;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStock(): int
+    {
+        return $this->stock;
+    }
+
+    /**
+     * @return float
+     */
+    public function getCost(): float
+    {
+        return $this->cost;
     }
 
     /**
@@ -199,6 +229,30 @@ class Product
     public function setTimestamp(\DateTime $timestamp): Product
     {
         $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * @param float $cost
+     *
+     * @return Product
+     */
+    public function setCost(float $cost): Product
+    {
+        $this->cost = $cost;
+
+        return $this;
+    }
+
+    /**
+     * @param int $stock
+     *
+     * @return Product
+     */
+    public function setStock(int $stock): Product
+    {
+        $this->stock = $stock;
 
         return $this;
     }
